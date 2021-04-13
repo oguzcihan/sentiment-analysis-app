@@ -78,4 +78,5 @@ Follow the instructions below to run the application.
 
 * If the user who logs into the system is admin, the router of the admin page is added to the navigation bar. The admin page is the page where the administrator can change the status of user accounts actively or passively, where users can delete their accounts and view the tags that users add to images.
 
-![Flask_Sentiment_Analysis](./searchtimeline.gif.gif)
+![searchtimeline](https://user-images.githubusercontent.com/52318129/114527966-3aefa500-9c51-11eb-804e-27c15e8fb503.gif)
+
