@@ -1,0 +1,33 @@
+{% include "index.html" %}
+{% block body %}
+
+    <div class="limiter">
+        <div class="container-login100" style="margin-top: -100px">
+            <div class="wrap-login100 p-t-50 p-b-90">
+                <form action="{{ url_for('usertimeline') }}" method="post">
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Search Keys is required">
+                        <input class="input100" type="text" name="user_name" placeholder="User Name">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Count is required">
+                        <input class="input100" type="number" name="us_count" placeholder="Tweet Count">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="container-login100-form-btn m-t-17">
+                        <button class="login100-form-btn" name="postt" type="submit">
+                            Tweet Getir
+                        </button>
+                    </div>
+                </form>
+                <br>
+                {% include "includes/mesagges.html" %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+<footer class="text-center">
+    Made with ❤ | <a href="#">Github</a> | <a
+        href="#">Oğuzhan Cihan</a>
+</footer><br><br>

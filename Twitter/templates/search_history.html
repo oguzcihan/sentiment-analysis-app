@@ -1,0 +1,46 @@
+{% include 'index.html' %}
+
+{% block body %}
+    <div class="container">
+        {% include "includes/mesagges.html" %}
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Search Keys</th>
+                <th scope="col">Date</th>
+                <th scope="col">Tweet Count</th>
+                <th scope="col">Negative Percantage(%)</th>
+                <th scope="col">Positive Percantage(%)</th>
+                <th scope="col">Neutral Percantage(%)</th>
+                <th scope="col">Operations</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in data %}
+                <tr id="logs">
+                    <td id="id"><b>{{ item[0] }}</b></td>
+                    <td id="key"><b>{{ item[1] }}</b></td>
+                    <td id="date"><b>{{ item[2] }}</b></td>
+                    <td id="count_tweet"><b>{{ item[3] }}</b></td>
+                    <td id="neg_per"><b>{{ item[4] }}</b></td>
+                    <td id="pos_per"><b>{{ item[5] }}</b></td>
+                    <td id="neu_per"><b>{{ item[6] }}</b></td>
+                    <td>
+                        <form action="{{ url_for('delete_history', id=item[0]) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="submit" value="Delete" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
+<br><br><br>
+<footer class="text-center">
+    Made with ❤ | <a href="#">Github</a> | <a
+        href="#">Oğuzhan Cihan</a>
+</footer><br><br>

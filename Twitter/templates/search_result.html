@@ -1,0 +1,138 @@
+{% include 'index.html' %}
+{% block body %}
+    <div class="container">
+        <strong class="card">
+            <p class="text-center">Search Keys: {{ query }} <br><br>
+                <a href='/searchtimeline'>
+                    <button class='btn btn-primary'>Try Again</button>
+                </a>
+            </p>
+            <br></strong><br>
+
+
+{#        <p class="text-center"><b>Negative: {{ result.neg }}#}
+{#            Positive: {{ result.pos }}#}
+{#            Neutral: {{ result.neut }}#}
+{#            Toplam: {{ q_count }}</b></p>#}
+
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Sentiment</th>
+                <th scope="col">Count</th>
+                <th scope="col">Total Count</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr id="logs">
+                <td id="sentiment"><b>Positive</b></td>
+                <td id="count"><b>{{ result.pos }}</b></td>
+                <td bgcolor="#6495ed" id="topv"><u><b>{{ q_count }}</b></u></td>
+            </tr>
+            <tr id="logs">
+                <td id="sentiment"><b>Negative</b></td>
+                <td id="count"><b>{{ result.neg }}</b></td>
+                <td bgcolor="#6495ed" id="topv"><u><b>{{ q_count }}</b></u></td>
+            </tr>
+            <tr id="logs">
+                <td id="sentiment"><b>Neutral</b></td>
+                <td id="count"><b>{{ result.neut }}</b></td>
+                <td bgcolor="#6495ed" id="topv"><u><b>{{ q_count }}</b></u></td>
+            </tr>
+
+
+            </tbody>
+        </table>
+        <p id="dic"></p>
+        <br>
+        <center>
+            <div id="chartContainer" style="height: 500px; width: 50%;"></div>
+        </center>
+        <script>
+
+            window.onload = function () {
+                topcnt = (document.getElementById('topv').innerText)
+                var points = []
+                $("table tr#logs ").each(function (i) {
+                    var tmp_d;
+                    $("td#sentiment", this).each(function (j) {
+                        tmp_d = $(this).text()
+                    });
+                    $("td#count", this).each(function (j) {
+                        percent = parseInt($(this).text()) * 100 / topcnt
+                        points.push({y: percent, label: tmp_d})
+                    });
+                });
+                CanvasJS.addColorSet("greenShades",
+                    [//colorSet Array
+                        "#228B22",
+                        "#FF0000",
+                        "#808080"
+                    ]);
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    colorSet: "greenShades",
+                    title: {
+                        text: "Sentiment Graph"
+                    },
+                    data: [{
+                        type: "pie",
+                        startAngle: 240,
+                        yValueFormatString: "##0.00\"%\"",
+                        indexLabel: "{label} {y}",
+                        dataPoints: points
+
+
+                    }]
+                });
+                chart.render();
+            }
+
+        </script>
+
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <br>
+
+
+
+        {% for pos in result.positive_tweets %}
+
+            <div class="card">
+                <div class="card-header" style="background:forestgreen">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ pos }}</p>
+                </div>
+            </div>
+            <br>
+
+        {% endfor %}
+        {% for neg in result.negative_tweets %}
+            <div class="card">
+                <div class="card-header" style="background:red">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ neg }}</p>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+        {% for neg in result.neutral_tweets %}
+            <div class="card">
+                <div class="card-header" style="background:gray">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ neg }}</p>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+<footer class="text-center">
+    Made with ❤ | <a href="#">Github</a> | <a
+        href="#">Oğuzhan Cihan</a>
+</footer><br><br>

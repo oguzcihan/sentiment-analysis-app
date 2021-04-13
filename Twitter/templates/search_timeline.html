@@ -1,0 +1,44 @@
+{% include "index.html" %}
+{% block body %}
+    {#    <div style="text-align: center">#}
+    {#        <form action="{{ url_for('search_timeline') }}" method="post">#}
+    {#            Anahtar Kelime: <input type="text" name="query" /><br><br>#}
+    {#            Çekilecek Tweet Sayısı: <input type="number" name="q_count"/><br><br>#}
+    {#            <button type="submit" class="btn btn-primary" name="postt">Tweet Getir</button>#}
+    {#        </form>#}
+    {#        <br>#}
+    {#    </div>#}
+
+    <div class="limiter" >
+        <div class="container-login100" style="margin-top: -100px" >
+            <div class="wrap-login100 p-t-50 p-b-90">
+                <form action="{{ url_for('search_timeline') }}" method="post">
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Search Keys is required">
+                        <input class="input100" type="text" name="query" placeholder="Search Keys">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Count is required">
+                        <input class="input100" type="number" name="q_count" placeholder="Tweet Count">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="container-login100-form-btn m-t-17">
+
+                        <button class="login100-form-btn" name="postt" type="submit" >
+                            Tweet Getir
+                        </button>
+
+                    </div>
+
+                </form>
+                <br>
+                {% include "includes/mesagges.html" %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+<footer class="text-center">
+    Made with ❤ | <a href="#">Github</a> | <a
+        href="http://rohanverma.net">Oğuzhan Cihan</a>
+</footer><br><br>

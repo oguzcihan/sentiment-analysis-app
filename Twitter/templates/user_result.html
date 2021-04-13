@@ -1,0 +1,82 @@
+{% include 'index.html' %}
+
+<div class="container">
+    <strong class="card">
+            <p class="text-center">User Name: {{ name }} <br><br>
+                <a href='/usertimeline'>
+                    <button class='btn btn-primary'>Try Again</button>
+                </a>
+            </p>
+            <br></strong><br>
+
+{#    Negative: {{ result.neg }}#}
+{#    Positive: {{ result.pos }}#}
+{#    Neutral: {{ result.neut }}#}
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sentiment</th>
+            <th scope="col">Count</th>
+            <th scope="col">Total Count</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr id="logs">
+            <td id="sentiment"><b>Positive</b></td>
+            <td id="count"><b>{{ result.pos }}</b></td>
+            <td bgcolor="#6495ed" id="topv"><u><b>{{ count }}</b></u></td>
+        </tr>
+        <tr id="logs">
+            <td id="sentiment"><b>Negative</b></td>
+            <td id="count"><b>{{ result.neg }}</b></td>
+            <td bgcolor="#6495ed" id="topv"><u><b>{{ count }}</b></u></td>
+        </tr>
+        <tr id="logs">
+            <td id="sentiment"><b>Neutral</b></td>
+            <td id="count"><b>{{ result.neut }}</b></td>
+            <td bgcolor="#6495ed" id="topv"><u><b>{{ count }}</b></u></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    {% for pos in result.positive_tweets %}
+
+        <div class="card">
+            <div class="card-header" style="background:forestgreen">
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ pos }}</p>
+            </div>
+        </div>
+        <br>
+
+    {% endfor %}
+    {% for neg in result.negative_tweets %}
+        <div class="card">
+            <div class="card-header" style="background:red">
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ neg }}</p>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+    {% for neg in result.neutral_tweets %}
+        <div class="card">
+            <div class="card-header" style="background:gray">
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ neg }}</p>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+
+</div>
+<footer class="text-center">
+    Made with ❤ | <a href="#">Github</a> | <a
+        href="#">Oğuzhan Cihan</a>
+</footer><br><br>
