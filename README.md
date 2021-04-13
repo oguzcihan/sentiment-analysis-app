@@ -28,7 +28,7 @@ It is a sentiment analysis platform written using **flask** framework.
 * `py app.py`
     
 * Create a database named **dbTwitter**.
-* * Create a table named **tbTwitter**.
+* Create a table named **tbTwitter**.
 
 
 
