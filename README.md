@@ -22,10 +22,10 @@ It is a sentiment analysis platform written using **flask** framework.
 ## Setup
 ---
 * Clone this repository and run following commands.
-    `pip install flask`
-    `pip install myssql`
-    `pip install twython`
-    `py app.py`
+* `pip install flask`
+* `pip install myssql`
+* `pip install twython`
+* `py app.py`
     
 * Create a database named **dbTwitter**.
 * * Create a table named **tbTwitter**.
