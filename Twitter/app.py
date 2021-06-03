@@ -12,6 +12,7 @@ import datetime as dt
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+'''Author: Oğuzhan Cihan'''
 
 '''MYSQL CONFIG'''
 app.config['MYSQL_HOST'] = 'localhost'
